@@ -157,7 +157,7 @@ const generateLetters = async () => {
   }
 
   function sortStringsByLength(wordsArr) {
-    return wordsArr.sort((a, b) => b.length - a.length);
+    return wordsArr.sort((b, a) => b.length - a.length);
   }
 
   const sequence = determineSequence();
@@ -167,10 +167,12 @@ const generateLetters = async () => {
     const list = await fetchRandomWords(pattern);
     const sortedList = sortStringsByLength(list);
     console.log('Fetched singular list:', sortedList);
+    return sortedList;
   } else {
     const words = await fetchWordsWithSequence(pattern, lo, hi, limit);
     const sortedList = sortStringsByLength(words);
     console.log('Fetched non-singular lists:', sortedList);
+    return sortedList;
   }
 };
 

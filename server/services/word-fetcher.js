@@ -37,7 +37,19 @@ async function fetchWordsWithSequence(sequence, lo, hi, limit) {
     }
 }
 
+// retrieve all words from the database
+async function fetchAllWords() {
+    try {
+        const words = await Word.findAll();
+        return words.map(word => word.word);
+    } catch (error) {
+        console.error('Error fetching all words:', error);
+        return [];
+    }
+}
+
 module.exports = {
-    fetchWordsWithSequence
+    fetchWordsWithSequence,
+    fetchAllWords
 }
 

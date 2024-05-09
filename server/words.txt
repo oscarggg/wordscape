@@ -1,7 +1,3 @@
-ATM
-CD
-SUV
-TV
 aardvark
 abacus
 abbey
@@ -264,7 +260,6 @@ aquarium
 aquifer
 arcade
 arch
-arch-rival
 archaeologist
 archaeology
 archeology
@@ -313,7 +308,6 @@ asparagus
 aspect
 asphalt
 aspic
-ass
 assassination
 assault
 assembly
@@ -388,7 +382,6 @@ babushka
 baby
 bachelor
 back
-back-up
 backbone
 backburn
 backdrop
@@ -541,7 +534,6 @@ beneficiary
 benefit
 beret
 berry
-best-seller
 bestseller
 bet
 beverage
@@ -569,7 +561,6 @@ biosphere
 biplane
 birch
 bird
-bird-watcher
 birdbath
 birdcage
 birdhouse
@@ -666,7 +657,6 @@ bother
 bottle
 bottling
 bottom
-bottom-line
 boudoir
 bough
 boulder
@@ -743,7 +733,6 @@ brood
 brook
 broom
 brother
-brother-in-law
 brow
 brown
 brownie
@@ -772,7 +761,6 @@ building
 bulb
 bulk
 bull
-bull-fighter
 bulldozer
 bullet
 bump
@@ -811,7 +799,6 @@ buyer
 buying
 buzz
 buzzard
-c-clamp
 cabana
 cabbage
 cabin
@@ -1064,7 +1051,6 @@ chinchilla
 chino
 chip
 chipmunk
-chit-chat
 chivalry
 chive
 chives
@@ -1179,7 +1165,6 @@ club
 clue
 cluster
 clutch
-co-producer
 coach
 coal
 coalition
@@ -1400,7 +1385,6 @@ cooperation
 coordination
 coordinator
 cop
-cop-out
 cope
 copper
 copy
@@ -1558,7 +1542,6 @@ cube
 cuckoo
 cucumber
 cue
-cuff-link
 cuisine
 cultivar
 cultivator
@@ -1982,9 +1965,6 @@ dynamite
 dynamo
 dynasty
 dysfunction
-e-book
-e-mail
-e-reader
 eagle
 eaglet
 ear
@@ -2179,8 +2159,6 @@ evidence
 evil
 evocation
 evolution
-ex-husband
-ex-wife
 exaggeration
 exam
 examination
@@ -2266,7 +2244,6 @@ faith
 faithful
 fall
 fallacy
-falling-out
 fame
 familiar
 familiarity
@@ -2275,7 +2252,6 @@ fan
 fang
 fanlight
 fanny
-fanny-pack
 fantasy
 farm
 farmer
@@ -2287,7 +2263,6 @@ fashion
 fat
 fate
 father
-father-in-law
 fatigue
 fatigues
 faucet
@@ -2403,7 +2378,6 @@ flicker
 flight
 flint
 flintlock
-flip-flops
 flock
 flood
 floodplain
@@ -2546,7 +2520,6 @@ gaffer
 gain
 gaiters
 gale
-gall-bladder
 gallery
 galley
 gallon
@@ -2555,7 +2528,7 @@ gambling
 game
 gamebird
 gaming
-gamma-ray
+gamma
 gander
 gang
 gap
@@ -2664,7 +2637,6 @@ golf
 gondola
 gong
 good
-good-bye
 goodbye
 goodie
 goodness
@@ -2719,8 +2691,6 @@ gravity
 gravy
 gray
 grease
-great-grandfather
-great-grandmother
 greatness
 greed
 green
@@ -2781,8 +2751,6 @@ hair
 haircut
 hake
 half
-half-brother
-half-sister
 halibut
 hall
 halloween
@@ -2794,7 +2762,6 @@ hammer
 hammock
 hamster
 hand
-hand-holding
 handball
 handful
 handgun
@@ -2811,7 +2778,6 @@ happiness
 harald
 harbor
 harbour
-hard-hat
 hardboard
 hardcover
 hardening
@@ -2856,11 +2822,9 @@ headphones
 headquarters
 headrest
 health
-health-care
 hearing
 hearsay
 heart
-heart-throb
 heartache
 heartbeat
 hearth
@@ -2907,7 +2871,6 @@ hiccups
 hide
 hierarchy
 high
-high-rise
 highland
 highlight
 highway
@@ -3036,7 +2999,6 @@ hypochondria
 hypothermia
 hypothesis
 ice
-ice-cream
 iceberg
 icebreaker
 icecream
@@ -3044,7 +3006,6 @@ icicle
 icing
 icon
 icy
-id
 idea
 ideal
 identification
@@ -3085,8 +3046,6 @@ impropriety
 improvement
 impudence
 impulse
-in-joke
-in-laws
 inability
 inauguration
 inbox
@@ -3248,7 +3207,6 @@ jade
 jaguar
 jail
 jailhouse
-jalapeÃ±o
 jam
 jar
 jasmine
@@ -3321,7 +3279,6 @@ keyboard
 keyboarding
 keystone
 kick
-kick-off
 kid
 kidney
 kielbasa
@@ -3351,12 +3308,10 @@ knee
 kneejerk
 knickers
 knife
-knife-edge
 knight
 knitting
 knock
 knot
-know-how
 knowledge
 knuckle
 koala
@@ -3602,7 +3557,6 @@ lyocell
 lyre
 lyrics
 lysine
-mRNA
 macadamia
 macaroni
 macaroon
@@ -3634,7 +3588,6 @@ maintainer
 maintenance
 maize
 major
-major-league
 majority
 makeover
 maker
@@ -3936,7 +3889,6 @@ most
 motel
 moth
 mother
-mother-in-law
 motion
 motivation
 motive
@@ -3971,8 +3923,6 @@ musculature
 museum
 mushroom
 music
-music-box
-music-making
 musician
 muskrat
 mussel
@@ -4391,7 +4341,6 @@ pedal
 peek
 peen
 peer
-peer-to-peer
 pegboard
 pelican
 pelt
@@ -4688,7 +4637,6 @@ president
 press
 pressroom
 pressure
-pressurisation
 pressurization
 prestige
 presume
@@ -4756,7 +4704,6 @@ prompt
 pronoun
 pronunciation
 proof
-proof-reader
 propaganda
 propane
 property
@@ -5138,7 +5085,6 @@ robotics
 rock
 rocker
 rocket
-rocket-ship
 rod
 role
 roll
@@ -5296,7 +5242,6 @@ screen
 screening
 screenwriting
 screw
-screw-up
 screwdriver
 scrim
 scrip
@@ -5337,9 +5282,6 @@ segment
 seizure
 selection
 self
-self-confidence
-self-control
-self-esteem
 seller
 selling
 semantics
@@ -5383,7 +5325,6 @@ settlement
 settler
 severity
 sewer
-sex
 sexuality
 shack
 shackle
@@ -5429,7 +5370,6 @@ shit
 shoat
 shock
 shoe
-shoe-horn
 shoehorn
 shoelace
 shoemaker
@@ -5452,7 +5392,6 @@ shoulder
 shout
 shovel
 show
-show-stopper
 shower
 shred
 shrimp
@@ -5502,7 +5441,6 @@ sinuosity
 sip
 sir
 sister
-sister-in-law
 sitar
 site
 situation
@@ -5768,7 +5706,6 @@ state
 statement
 statin
 station
-station-wagon
 statistic
 statistics
 statue
@@ -5785,19 +5722,8 @@ stem
 stench
 stencil
 step
-step-aunt
-step-brother
-step-daughter
-step-father
-step-grandfather
-step-grandmother
-step-mother
-step-sister
-step-son
-step-uncle
 stepdaughter
 stepmother
-stepping-stone
 stepson
 stereo
 stew
@@ -5814,7 +5740,6 @@ stir-fry
 stitch
 stitcher
 stock
-stock-in-trade
 stockings
 stole
 stomach
@@ -5829,7 +5754,6 @@ store
 storey
 storm
 story
-story-telling
 storyboard
 stot
 stove
@@ -5996,7 +5920,6 @@ synonym
 synthesis
 syrup
 system
-t-shirt
 tab
 tabby
 tabernacle
@@ -6015,13 +5938,11 @@ tail
 tailbud
 tailor
 tailspin
-take-out
 takeover
 tale
 talent
 talk
 talking
-tam-o'-shanter
 tamale
 tambour
 tambourine
@@ -6138,7 +6059,6 @@ thing
 thinking
 thirst
 thistle
-thong
 thongs
 thorn
 thought
@@ -6352,7 +6272,6 @@ tumbler
 tummy
 tuna
 tune
-tune-up
 tunic
 tunnel
 turban
@@ -6633,7 +6552,6 @@ webpage
 website
 wedding
 wedge
-weed
 weeder
 weedkiller
 week
@@ -6644,10 +6562,8 @@ weird
 welcome
 welfare
 well
-well-being
 west
 western
-wet-bar
 wetland
 wetsuit
 whack
@@ -6684,7 +6600,6 @@ willingness
 willow
 win
 wind
-wind-chime
 windage
 window
 windscreen
@@ -6706,7 +6621,6 @@ wish
 wisteria
 wit
 witch
-witch-hunt
 withdrawal
 witness
 wok
@@ -6797,5 +6711,4 @@ zone
 zoo
 zoologist
 zoology
-zoot-suit
 zucchini
