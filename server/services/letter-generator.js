@@ -1,5 +1,5 @@
 const { fetchRandomWords } = require('./randomWords');
-const { fetchWordsWithSequence } = require('./word-fetcher');
+const { fetchWordsWithSequence, fetchWordsWithLetter } = require('./word-fetcher');
 
 const generateLetters = async () => {
   let lo = 4;
@@ -125,25 +125,47 @@ const generateLetters = async () => {
 
     // if no sequence is selected, use random letters
     singleLetter = true;
-    return selectRandomLetters(letters, hi);
+    return getRandomLetter(letters);
   }
 
   function selectRandomSequence(sequences) {
+
     const keys = Object.keys(sequences);
     const randomIndex = Math.floor(Math.random() * keys.length);
     const key = keys[randomIndex];
-    return {
-        sequence: key,
-        frequency: sequences[key]
-    };
+    return key;
+  }
+
+  // returns a random letter from the given object
+  // a higher frequency means the letter is more likely to be picked
+  function getRandomLetter(letters) {
+
+    let totalWeight = 0;
+    let entries = Object.entries(letters);
+
+    for(let [letter, weight] of entries) {
+        totalWeight += weight;
+    }
+
+    let randomWeight = Math.random() * totalWeight;
+
+    for(let [letter, weight] of entries) {
+        if(randomWeight < weight) {
+            return letter;
+        }
+        randomWeight -= weight;
+    }
   }
 
   function selectRandomLetters(letters, count) {
+
     let selected = '';
     let entries = Object.entries(letters);
+
     for (let i = 0; i < count; ++i) {
         let totalWeight = entries.reduce((acc, [letter, weight]) => acc + weight, 0);
         let randomWeight = Math.random() * totalWeight;
+
         for(let [letter, weight] of entries) {
             if(randomWeight < weight) {
                 selected += letter;
@@ -160,14 +182,20 @@ const generateLetters = async () => {
     return wordsArr.sort((b, a) => b.length - a.length);
   }
 
-  const sequence = determineSequence();
-  const pattern = sequence.sequence;
+  const pattern = determineSequence();
   
   if(singleLetter) {
-    const list = await fetchRandomWords(pattern);
-    const sortedList = sortStringsByLength(list);
-    console.log('Fetched singular list:', sortedList);
-    return sortedList;
+
+    try {
+      console.log('Singular letter picked:', pattern);
+      const list = await fetchWordsWithLetter(pattern);
+      const sortedList = sortStringsByLength(list).slice(0, limit);
+      console.log('Fetched singular list:', sortedList);
+      return sortedList;
+    } catch (error) {
+        console.error('Error fetching random words:', error);
+        return [];
+    }
   } else {
     const words = await fetchWordsWithSequence(pattern, lo, hi, limit);
     const sortedList = sortStringsByLength(words);
@@ -176,5 +204,7 @@ const generateLetters = async () => {
   }
 };
 
-module.exports = { generateLetters };
+module.exports = { 
+  generateLetters
+};
 

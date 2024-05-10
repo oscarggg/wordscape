@@ -35,21 +35,27 @@ async function selectWords() {
 }
 
 // 2nd version of algorithm that will be used to choose the letters picked for the game
-/*async function selectLetters() {
+function selectRandomWords(stringArr) {
     
-    try {
-        let letterLimit = 6;
-        let vowels = ['A', 'E', 'I', 'O', 'U'];
-
-        const letters = await generateLetters();
-        topLetters = letters.slice(0, letterLimit);
-        console.log('Top 6 letters:', topLetters);
-        return topLetters;
-    } catch (error) {
-        console.error('Error selecting letters:', error);
+    if (!Array.isArray(stringArr)) {
+        console.error('Invalid input: expected an array, received:', stringArr);
         return [];
     }
-}*/
 
-module.exports = { selectWords };
+    try {
+        let wordLimit = 6;
+        const shuffled = stringArr.sort(() => Math.random() - 0.5);
+        const selected = shuffled.slice(0, wordLimit);
+        console.log('Selected random words:', selected);
+        return selected;
+    } catch (error) {
+        console.error('Error selecting random words:', error);
+        return [];
+    }
+}
+
+module.exports = { 
+    selectWords,
+    selectRandomWords
+ };
 

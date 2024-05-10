@@ -273,7 +273,6 @@ argument
 arithmetic
 ark
 arm
-arm-rest
 armadillo
 armament
 armchair
@@ -776,7 +775,6 @@ burglar
 burial
 burlesque
 burn
-burn-out
 burning
 burrito
 burro
@@ -1433,7 +1431,6 @@ counsellor
 counselor
 count
 counter
-counter-force
 counterpart
 counterterrorism
 countess
@@ -1518,8 +1515,6 @@ croissant
 crook
 crop
 cross
-cross-contamination
-cross-stitch
 crotch
 croup
 crow
@@ -1639,7 +1634,6 @@ decadence
 decency
 decimal
 decision
-decision-making
 deck
 declaration
 declination
@@ -2149,7 +2143,6 @@ evaluator
 evaporation
 eve
 evening
-evening-wear
 event
 everybody
 everyone
@@ -2620,7 +2613,6 @@ glut
 glutamate
 gnat
 gnu
-go-kart
 goal
 goat
 gobbler
@@ -2651,7 +2643,6 @@ governance
 government
 governor
 gown
-grab-bag
 grace
 grade
 gradient
@@ -3756,7 +3747,6 @@ microlending
 micronutrient
 microphone
 microwave
-mid-course
 midden
 middle
 middleman
@@ -3789,7 +3779,6 @@ mine
 mineral
 mineshaft
 mini
-mini-skirt
 minibus
 minimalism
 minimum
@@ -3799,7 +3788,6 @@ minister
 mink
 minnow
 minor
-minor-league
 minority
 mint
 minute
@@ -4085,7 +4073,6 @@ octopus
 odometer
 odyssey
 oeuvre
-off-ramp
 offence
 offense
 offer
@@ -4449,7 +4436,6 @@ pimp
 pimple
 pin
 pinafore
-pince-nez
 pine
 pineapple
 pinecone
@@ -4526,7 +4512,6 @@ plunger
 plywood
 pneumonia
 pocket
-pocket-watch
 pocketbook
 pod
 podcast
@@ -5736,7 +5721,6 @@ stimulation
 stimulus
 sting
 stinger
-stir-fry
 stitch
 stitcher
 stock
@@ -5950,7 +5934,6 @@ tan
 tandem
 tangerine
 tank
-tank-top
 tanker
 tankful
 tap
@@ -6124,7 +6107,6 @@ toilet
 tolerance
 tolerant
 toll
-tom-tom
 tomatillo
 tomato
 tomb
@@ -6143,7 +6125,6 @@ toothbrush
 toothpaste
 toothpick
 top
-top-hat
 topic
 topsail
 toque
@@ -6158,12 +6139,10 @@ tosser
 total
 tote
 touch
-tough-guy
 tour
 tourism
 tourist
 tournament
-tow-truck
 towel
 tower
 town
@@ -6506,7 +6485,6 @@ wardrobe
 warfare
 warlock
 warlord
-warm-up
 warming
 warmth
 warning

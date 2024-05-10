@@ -10,6 +10,9 @@ export default defineConfig({
     vue(),
     vueJsx(),
   ],
+  define: {
+    'import.meta.env': import.meta.env
+  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))

@@ -1,6 +1,11 @@
 const { Word } = require('../models');
 const Sequelize = require('sequelize');
 
+/**
+ * Fetches random words based on the given letters.
+ * @param {string} sequence - The sequence to use for fetching words.
+ * @returns {Promise<string[]>} - A promise that resolves with an array of words.
+ */
 async function fetchRandomWords(sequence) {
   try {
     const lettersArr = sequence.split('');

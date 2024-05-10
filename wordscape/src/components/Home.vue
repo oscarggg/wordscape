@@ -6,17 +6,29 @@
 
 <script>
 import GameBoard from './GameBoard.vue'
+import api from '@/services/api'
 
 export default {
+  name: 'home',
   components: {
     GameBoard
   },
   data () {
     return {
-      gameStarted: false
+      gameStarted: false,
+      words: []
     }
   },
+  created() {
+    this.getWords();
+  },
   methods: {
+    getWords() {
+      api.getWords().then(response => {
+        this.words = response.data;
+        console.log(response.data);
+      });
+    },
     startGame () {
       this.gameStarted = true
     }
