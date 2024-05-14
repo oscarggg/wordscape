@@ -1,6 +1,6 @@
 <template>
   <div class="home-container">
-    <GameBoard/>
+    <GameBoard :words="words"/>
   </div>
 </template>
 
@@ -38,15 +38,18 @@ export default {
 
 <style scoped>
 .home-container {
-  border: 2px double black;
+  border: 2px double rgb(9, 246, 61);
   border-style: double;
-  margin: 10%;
+  margin: 0 auto 10%;
+  max-width: 500px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between; /* Ensures content is spaced out vertically */
   align-items: center;
   height: 100vh; /* Full height of the viewport */
   padding: 20px; /* Padding around the container */
+  position: relative;
 }
 
 .menu {
