@@ -1,15 +1,12 @@
 <template>
   <div class="game-board">
-    <div v-for="(letter, letterIndex) in allLetters" :key="letterIndex" 
-      class="letter-circle animate__animated animate__bounceInDown"
-      :class="{ 'used': usedIndexes.includes(letterIndex)}" 
-      @click="addToCurrentWord(letter, letterIndex)"
-      :style="{ 
-        left: positions[letterIndex] ? positions[letterIndex].x + 'px': '0px',
-        width: constants.circleSize + 'px',
-        height: constants.circleSize + 'px'
-      }">
-      {{ letter }}
+    <div v-for="(row, rowIndex) in rows" :key="rowIndex" class="row">
+      <div v-for="(letter, letterIndex) in row" :key="letterIndex" 
+        class="letter-circle animate__animated animate__bounceInDown"
+        :class="{ 'used': usedIndexes.includes(letterIndex)}" 
+        @click="addToCurrentWord(letter, letterIndex)">
+        {{ letter }}
+      </div>
     </div>
   </div>
   <div class="button-container">
@@ -20,6 +17,8 @@
   
   <script>
   import Alphabet from './Alphabet.vue'
+  import { calculateFixedPositions, alternateRows } from '../services/animations.js'
+  import { scrambleWords, generateRandomLetters } from '../services/word-generator.js'
 
   export default {
     components: {
@@ -34,12 +33,13 @@
         usedIndexes: [],
         positions: [],
         allLetters: [],
+        rows: [],
         constants: {
           circleSize: 45, // diameter of circles
           boardPadding: 20, // padding around the board
           fallSpeed: 5, // speed of the falling animation
           updateInterval: 20 // interval for updating position of letters
-        }
+        },
       }
     },
     watch: {
@@ -65,26 +65,13 @@
         }
       },
       prepareLetters() {
-        this.allLetters = this.words.join('').split('')
+        this.allLetters = scrambleWords(this.words).join('').split('');
+        //this.allLetters = generateRandomLetters(120);
         console.log('preparing letters: ', this.allLetters);
-        this.calculatePositions(this.allLetters)
-      },
-      calculatePositions(lettersArr) {
-
-        if(!this.$el) {
-          console.error('No element found');
-          return;
-        }
-        // initialize positions array
-        console.log('client width:', this.$el.nextElementSibling.clientWidth);
-        console.log('circleSize:', this.constants.circleSize);
-        let clientHeight = this.$el.nextElementSibling.clientHeight;
-        this.positions = lettersArr?.map((_, index) => ({
-          x: Math.random() * (clientHeight - this.constants.circleSize), // random x within the board
-        }));
-        /*this.positions = lettersArr?.map((_, index) => ({
-          x: 3, // random x within the board
-        }));*/
+        const containerHeight = this.$el.nextElementSibling.clientHeight;
+        const containerWidth = this.$el.nextElementSibling.clientWidth;
+        this.rows = alternateRows(this.allLetters, containerWidth, this.constants.circleSize, 10);
+        this.positions = calculateFixedPositions(this.allLetters, containerWidth, containerHeight, this.constants.circleSize);
         console.log('Positions:', this.positions);
       }
     }
@@ -103,17 +90,16 @@
   }
   .game-board {
   border-style: dashed;
-  top: 0;
-  left: 0;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 70%;
+  flex-direction: column-reverse;
+  align-items: center;
+  height: 73%;
   position: relative;
   width: 100%;
   padding: var(--board-padding);
   overflow: hidden; /* prevent letters from going outside the board */
   }
+
   
   .letter-circle {
     display: flex;
@@ -122,21 +108,17 @@
     background-color: #FFC107;
     color: white;
     font-size: 24px;
-    border-radius: 80%;
-    position: absolute;
+    border-radius: 50%;
     user-select: none;
     cursor: pointer;
-    bottom: 0;
+    width: 45px;
+    height: 45px;
   }
-  .letter-circle.used {
-    /* Style for used letters, e.g., making them less visible */
-    opacity: 0.5;
-    pointer-events: none;
-  }
-  .letters-and-create {
+
+  .row {
     display: flex;
-    flex-direction: column;
-    align-items: center; /* Center content horizontally */
+    justify-content: center;
+    width: 100%;
   }
   .menu-button {
     align-self: center;

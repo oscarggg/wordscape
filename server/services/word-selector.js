@@ -34,6 +34,7 @@ async function selectWords() {
     }
 }
 
+
 // 2nd version of algorithm that will be used to choose the letters picked for the game
 function selectRandomWords(stringArr) {
     
@@ -43,7 +44,7 @@ function selectRandomWords(stringArr) {
     }
 
     try {
-        let wordLimit = 6;
+        let wordLimit = 30;
         const shuffled = stringArr.sort(() => Math.random() - 0.5);
         const selected = shuffled.slice(0, wordLimit);
         console.log('Selected random words:', selected);

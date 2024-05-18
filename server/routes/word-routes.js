@@ -3,11 +3,14 @@ const router = express.Router();
 
 const { generateLetters } = require('../services/letter-generator');
 const { selectRandomWords } = require('../services/word-selector');
+const { capitalizeWords } = require('../services/word-modifier');
+const { fetchWordsByAmount } = require('../services/word-fetcher');
 
 router.get('/', async (req, res) => {
     try {
-        const wordList = await generateLetters();
-        const selectedWords = selectRandomWords(wordList);
+        //const wordList = await generateLetters();
+        //const selectedWords = capitalizeWords(selectRandomWords(wordList));
+        const selectedWords = await fetchWordsByAmount(10, 3, 6);
         res.json(selectedWords);
     } catch (error) {
         console.error('Error fetching words:', error);

@@ -14,9 +14,3 @@ app.listen(5000, () => {
   console.log('Server is running on port 5000');
 });
 
-/*try {
-  const wordList = await generateLetters();
-  selectRandomWords(wordList);
-} catch (error) {
-  console.error('Error selecting random words:', error);
-}*/
