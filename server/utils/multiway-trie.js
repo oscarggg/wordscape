@@ -79,7 +79,37 @@ class Trie {
 
     size() { return this.numWords; }
 
+    serialize() {
+        const serializeNode = (node) => {
+            return {
+                key: node.key,
+                isValidWord: node.isValidWord,
+                children: Object.fromEntries(Object.entries(node.children).map(([char, child]) => [char, serializeNode(child)]))
+            };
+        };
+        return JSON.stringify({
+            root: serializeNode(this.root),
+            numWords: this.numWords
+        });
+    }
+
+    static deserialize(serializedTrie) {
+        const data = JSON.parse(serializedTrie);
+
+        const deserializeNode = (node) => {
+            const newNode = new TrieNode(node.key);
+            newNode.isValidWord = node.isValidWord || false;
+            newNode.children = Object.fromEntries(
+                Object.entries(node.children).map(([char, child]) => [char, deserializeNode(child)]));
+            return newNode;
+        };
+        const trie = new Trie();
+        trie.root = deserializeNode(data.root);
+        trie.numWords = data.numWords || 0;
+        return trie;
+    }
 }
 
-export { Trie };
+module.exports = Trie;
+
 

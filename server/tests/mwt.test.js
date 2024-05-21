@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from 'vitest'
-import { Trie } from '../utils/multiway-trie'
+import Trie from '../utils/multiway-trie'
 
 describe('Trie', () => {
   let trie;
