@@ -3,8 +3,10 @@
     <div v-for="(row, rowIndex) in rows" :key="rowIndex" class="row">
       <div v-for="(letter, letterIndex) in row" :key="letterIndex" 
         class="letter-circle animate__animated animate__bounceInDown"
-        :class="{ 'used': usedIndexes.includes(letterIndex)}" 
-        @click="addToCurrentWord(letter, letterIndex)">
+        :class="{ 'used': usedIndexes.includes(getGlobalIndex(rowIndex, letterIndex)), 'hovered': hoveredIndexes.includes(getGlobalIndex(rowIndex, letterIndex))}" 
+        @mouseover="hoverLetter($event, getGlobalIndex(rowIndex, letterIndex))"
+        @mousedown="startSelection($event, getGlobalIndex(rowIndex, letterIndex))"
+        @mouseup="endSelection()">
         {{ letter }}
       </div>
     </div>
@@ -18,7 +20,8 @@
   <script>
   import Alphabet from './Alphabet.vue'
   import { calculateFixedPositions, alternateRows } from '../services/animations.js'
-  import { scrambleWords, generateRandomLetters } from '../services/word-generator.js'
+  import { wordSplitter } from '../services/word-generator.js'
+  import { formWord } from '../services/game-mechanics.js'
 
   export default {
     components: {
@@ -30,7 +33,9 @@
     data () {
       return {
         gameStarted: false,
+        isSelecting: false,
         usedIndexes: [],
+        hoveredIndexes: [],
         positions: [],
         allLetters: [],
         rows: [],
@@ -65,7 +70,7 @@
         }
       },
       prepareLetters() {
-        this.allLetters = scrambleWords(this.words).join('').split('');
+        this.allLetters = wordSplitter(this.words).join('').split('');
         //this.allLetters = generateRandomLetters(120);
         console.log('preparing letters: ', this.allLetters);
         const containerHeight = this.$el.nextElementSibling.clientHeight;
@@ -73,6 +78,40 @@
         this.rows = alternateRows(this.allLetters, containerWidth, this.constants.circleSize, 10);
         this.positions = calculateFixedPositions(this.allLetters, containerWidth, containerHeight, this.constants.circleSize);
         console.log('Positions:', this.positions);
+      },
+      startSelection(event, index) {
+        this.isSelecting = true;
+        if(!this.hoveredIndexes.includes(index)) {
+          console.log('Starting selection, index is: ', index);
+          console.log('Event', event);
+          this.hoveredIndexes.push(index);
+          this.$forceUpdate();
+        }
+      },
+      endSelection() {
+        this.isSelecting = false;
+        const formedWord = formWord(this.allLetters, this.hoveredIndexes);
+        console.log('Formed word:', formedWord);
+        this.hoveredIndexes = [];
+      },
+      hoverLetter(event, index) {
+        if(this.isSelecting) {
+          console.log('hovering over index', index);
+          const hoverIndex = this.hoveredIndexes.indexOf(index);
+          if(hoverIndex === -1) {
+            this.hoveredIndexes.push(index);
+          } else if(hoverIndex != this.hoveredIndexes.length - 1) {
+            this.hoveredIndexes = this.hoveredIndexes.slice(0, hoverIndex + 1);
+          }
+          this.$forceUpdate();
+        }
+      },
+      getGlobalIndex(rowIndex, letterIndex) {
+        let globalIndex = 0;
+        for(let i = 0; i < rowIndex; i++) {
+          globalIndex += this.rows[i].length;
+        }
+        return globalIndex + letterIndex;
       }
     }
   }
@@ -89,6 +128,7 @@
     justify-content: center;
   }
   .game-board {
+    background-color: #325640;
   border-style: dashed;
   display: flex;
   flex-direction: column-reverse;
@@ -113,6 +153,10 @@
     cursor: pointer;
     width: 45px;
     height: 45px;
+  }
+
+  .letter-circle.hovered {
+    background-color: #121bc7;
   }
 
   .row {

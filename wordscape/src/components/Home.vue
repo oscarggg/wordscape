@@ -1,12 +1,13 @@
 <template>
   <div class="home-container">
-    <GameBoard :words="words"/>
+    <GameBoard :words="words" :trie="trie"/>
   </div>
 </template>
 
 <script>
 import GameBoard from './GameBoard.vue'
 import api from '@/services/api'
+import trieApi from '@/services/trie-api'
 
 export default {
   name: 'home',
@@ -16,17 +17,27 @@ export default {
   data () {
     return {
       gameStarted: false,
-      words: []
+      words: [],
+      trie: null
     }
   },
   created() {
     this.getWords();
+    this.getTrie();
   },
   methods: {
     getWords() {
       api.getWords().then(response => {
         this.words = response.data;
         console.log(response.data);
+      });
+    },
+    getTrie() {
+      trieApi.getTrie().then(res => {
+        this.trie = res.data;
+        console.log('Trie received:', res.data);
+      }).catch(err => {
+        console.error(err);
       });
     },
     startGame () {

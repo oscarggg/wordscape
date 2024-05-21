@@ -62,11 +62,32 @@ function scrambleWords(words) {
 
 // cuts off every word starting from the end up to the first vowel (exlusive).
 function wordSplitter(words) {
+    function splitWord(word) {
+        const ratio = 0.8;
+        const splitIndex = Math.ceil(word.length * ratio);
+        return [word.slice(0, splitIndex), word.slice(splitIndex)];
+    }
 
+    const result = [];
+    for (const word of words) {
+        const [firstPart, secondPart] = splitWord(word);
+        result.push(firstPart, secondPart);
+    }
+
+    return shuffleArray(result);
+}
+
+function shuffleArray(words) {
+    for(let i = words.length - 1; i > 0; --i) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [words[i], words[j]] = [words[j], words[i]];
+    }
+    return words;
 }
 
 export { 
     generateRandomLetters,
-    scrambleWords
+    scrambleWords,
+    wordSplitter
 };
 
