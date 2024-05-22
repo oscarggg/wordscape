@@ -18,7 +18,7 @@ export default {
     return {
       gameStarted: false,
       words: [],
-      trie: null
+      trie: {}
     }
   },
   created() {
@@ -34,8 +34,8 @@ export default {
     },
     getTrie() {
       trieApi.getTrie().then(res => {
-        this.trie = res.data;
-        console.log('Trie received:', res.data);
+        this.trie = res;
+        console.log('Trie received:', res);
       }).catch(err => {
         console.error(err);
       });

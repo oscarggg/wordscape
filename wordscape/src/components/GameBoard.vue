@@ -22,6 +22,7 @@
   import { calculateFixedPositions, alternateRows } from '../services/animations.js'
   import { wordSplitter } from '../services/word-generator.js'
   import { formWord } from '../services/game-mechanics.js'
+  import { Trie } from '../../../shared/utils/mwt.js'
 
   export default {
     components: {
@@ -29,6 +30,10 @@
     },
     props: {
       words: Array,
+      trie: {
+        type: Object,
+        required: true
+      }
     },
     data () {
       return {
@@ -91,7 +96,9 @@
       endSelection() {
         this.isSelecting = false;
         const formedWord = formWord(this.allLetters, this.hoveredIndexes);
+        const wordExists = this.trie.search(formedWord);
         console.log('Formed word:', formedWord);
+        console.log('Word exists:', wordExists);
         this.hoveredIndexes = [];
       },
       hoverLetter(event, index) {

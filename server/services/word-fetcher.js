@@ -56,7 +56,7 @@ async function fetchWordsByAmount(amount, minLength, maxLength) {
             limit: amount
         });
 
-        return words.map(word => word.word);
+        return words.map(word => word.word.toUpperCase());
     } catch (error) {
         console.error('Error fetching words by amount:', error);
         return [];
@@ -88,9 +88,16 @@ async function fetchWordsWithLetter(letter) {
 
 // retrieve all words from the database
 async function fetchAllWords() {
+    console.log('Fetching all words');
     try {
         const words = await Word.findAll();
-        return words.map(word => word.word);
+        if(words.length === 0) {
+            console.log('No words found in db');
+            return [];
+        } else {
+            console.log('Words found in db:', words.length);
+            return words.map(word => word.word);
+        }
     } catch (error) {
         console.error('Error fetching all words:', error);
         return [];
