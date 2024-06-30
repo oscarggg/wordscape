@@ -1,17 +1,20 @@
 <template>
   <div class="home-container">
-    <GameBoard :words="words" :trie="trie"/>
+    <GameBoard :words="words" :trie="trie" :gameStarted="gameStarted"/>
+    <Menu v-if="!gameStarted" @start-game="startGame" @openSettings="openSettings"/>
   </div>
 </template>
 
 <script>
 import GameBoard from './GameBoard.vue'
+import Menu from './Menu.vue'
 import api from '@/services/api'
 import trieApi from '@/services/trie-api'
 
 export default {
   name: 'home',
   components: {
+    Menu,
     GameBoard
   },
   data () {
@@ -42,6 +45,9 @@ export default {
     },
     startGame () {
       this.gameStarted = true
+    },
+    openSettings() {
+      console.log('settings opened');
     }
   }
 }

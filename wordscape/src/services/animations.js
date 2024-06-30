@@ -1,3 +1,5 @@
+import 'animate.css';
+
 function calculateFixedPositions(letters, containerWidth, containerHeight, circleSize) {
     const positions = [];
     const circleGridSize = circleSize * 2; // Each circle spans 2 grid cells
@@ -49,8 +51,73 @@ function alternateRows(lettersArr, contWidth, circleSize, maxLetters) {
     return rows;
 }
 
+function createRows(lettersArr, contWidth, circleSize, lettersPerRow) {
+    const rows = [];
+    let row = [];
+
+    lettersArr.forEach((letter, index) => {
+        row.push(letter);
+        if(row.length === lettersPerRow) {
+            rows.push(row);
+            row = [];
+        }
+    });
+
+    if (row.length > 0) {
+        rows.push(row);
+    }
+
+    return rows;
+}
+
+function updateIndexes(rows) {
+    const numCols = Math.max(...rows.map(row => row.length));
+    
+    for(let col = 0; col < numCols; ++col) {
+        let emptySpots = 0;
+
+        for(let row = rows.length - 1; row >= 0; --row) {
+            if(rows[row][col] === undefined || rows[row][col] === null) {
+                emptySpots++;
+            } else if(emptySpots > 0) {
+                rows[row + emptySpots][col] = rows[row][col];
+                rows[row][col] = null;
+            }
+        }
+    }
+
+    return rows.filter(row => row.some(letter => letter !== null));
+}
+
+function applyAnimation(animationName, hoveredIndexes, getRowAndLetterIndexes) {
+    hoveredIndexes.forEach(index => {
+        const { rowIndex, letterIndex } = getRowAndLetterIndexes(index);
+        const element = document.querySelector(`.row:nth-child(${rowIndex + 1}) .letter-circle:nth-child(${letterIndex + 1})`);
+        if(element) {
+            //element.parentElement.classList.add('animate__animated', animationName);
+            //element.classList.remove('animate__animated', animationName);
+            //element.classList.add('animate__animated', 'bounce');
+            //void element.offsetWidth;
+            //element.classList.remove('animate__animated', animationName);
+            //element.classList.add('animate__animated', animationName);
+            console.log('element', element);
+            console.log('element class list', element.classList);
+
+            // remove animation classes to allow for reapplication later
+            element.addEventListener('animationend', function removeAnimation() {
+                element.classList.remove('animate__animated', animationName);
+                element.removeEventListener('animationend', removeAnimation);
+            });
+        }
+        
+    });
+}
+
 export {
     calculateFixedPositions,
-    alternateRows
+    alternateRows,
+    createRows,
+    updateIndexes,
+    applyAnimation
 };
 
